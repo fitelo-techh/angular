@@ -1,0 +1,78 @@
+{
+  "name": "angular",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "app:ngx-fitelo:watch": "ng build ngx-fitelo --watch --configuration development",
+    "app:ngx-fitelo:rsync": "rsync -r dist/ngx-fitelo/ ../app/node_modules/ngx-fitelo/",
+    "app:ngx-fitelo:develop": "concurrently --kill-others \"npm run app:ngx-fitelo:watch\" \"npm-watch app:ngx-fitelo:rsync\"",
+    "ngx-fitelo:deploy": "ng-publish-to-git --prod --package ngx-fitelo",
+    "nestjs:tsx-fitelo:watch": "ng build tsx-fitelo --watch --configuration development",
+    "nestjs:tsx-fitelo:rsync": "rsync -r dist/tsx-fitelo/ ../nestjs/node_modules/tsx-fitelo/",
+    "nestjs:tsx-fitelo:develop": "concurrently --kill-others \"npm run nestjs:tsx-fitelo:watch\" \"npm-watch nestjs:tsx-fitelo:rsync\"",
+    "tsx-fitelo:deploy": "ng-publish-to-git --prod --package tsx-fitelo"
+  },
+  "watch": {
+    "app:ngx-fitelo:rsync": "dist/**/*.js",
+    "nestjs:tsx-fitelo:rsync": "dist/**/*.js"
+  },
+  "private": true,
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.10.22",
+    "@angular/animations": "~12.2.0",
+    "@angular/common": "~12.2.0",
+    "@angular/compiler": "~12.2.0",
+    "@angular/core": "~12.2.0",
+    "@angular/fire": "^6.1.5",
+    "@angular/forms": "~12.2.0",
+    "@angular/platform-browser": "~12.2.0",
+    "@angular/platform-browser-dynamic": "~12.2.0",
+    "@angular/router": "~12.2.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "firebase": "^8.10.0",
+    "moment": "^2.29.1",
+    "ng-publish-to-git": "^2.0.1",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~12.2.7",
+    "@angular/cli": "~12.2.2",
+    "@angular/compiler-cli": "~12.2.0",
+    "@types/jasmine": "~3.8.0",
+    "@types/node": "^12.11.1",
+    "concurrently": "^6.2.1",
+    "jasmine-core": "~3.8.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^12.1.1",
+    "npm-watch": "^0.11.0",
+    "typescript": "~4.3.5"
+  },
+  "ng-publish-to-git": {
+    "commitPrefix": "GLOBAL-PREFIX",
+    "packages": [
+      {
+        "name": "ngx-fitelo",
+        "commitPrefix": "LIB1-SPECIFIC-PREFIX",
+        "publish": true,
+        "repositoryUrl": "git@github.com:fitelo/ngx-fitelo.git"
+      },
+      {
+        "name": "tsx-fitelo",
+        "commitPrefix": "LIB2-SPECIFIC-PREFIX",
+        "publish": true,
+        "repositoryUrl": "git@github.com:fitelo/tsx-fitelo.git"
+      }
+    ]
+  }
+}

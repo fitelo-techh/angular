@@ -1,0 +1,11 @@
+<fit-spinner *ngIf="isLoading && showSpinner"></fit-spinner>
+<ng-container *ngIf="!isLoading">
+  <p style="text-align: center;" *ngIf="!entries?.length">
+    Please update some values
+  </p>
+  <div
+    *ngIf="entries?.length"
+    [id]="id"
+    style="width: 100%; height: 400px"
+  ></div>
+</ng-container>

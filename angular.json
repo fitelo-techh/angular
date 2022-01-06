@@ -1,0 +1,70 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-fitelo": {
+      "projectType": "library",
+      "root": "projects/ngx-fitelo",
+      "sourceRoot": "projects/ngx-fitelo/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-fitelo/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-fitelo/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-fitelo/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-fitelo/src/test.ts",
+            "tsConfig": "projects/ngx-fitelo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-fitelo/karma.conf.js"
+          }
+        }
+      }
+    },
+    "tsx-fitelo": {
+      "projectType": "library",
+      "root": "projects/tsx-fitelo",
+      "sourceRoot": "projects/tsx-fitelo/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/tsx-fitelo/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/tsx-fitelo/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/tsx-fitelo/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tsx-fitelo/src/test.ts",
+            "tsConfig": "projects/tsx-fitelo/tsconfig.spec.json",
+            "karmaConfig": "projects/tsx-fitelo/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-fitelo"
+}
